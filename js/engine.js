@@ -64,7 +64,7 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
+        //reset();
         lastTime = Date.now();
         main();
     }
@@ -94,7 +94,9 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        allBonuses.forEach(function(bonus) {
+            bonus.update(dt);
+        });
     }
 
     /* This function initially draws the "game level", it will then call
@@ -152,6 +154,10 @@ var Engine = (function(global) {
             enemy.render();
         });
 
+        allBonuses.forEach(function(bonus) {
+            bonus.render();
+        });
+
         player.render();
     }
 
@@ -172,7 +178,10 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-cat-girl.png',
+        'images/gem-blue.png',
+        'images/gem-orange.png',
+        'images/heart.png'
     ]);
     Resources.onReady(init);
 
